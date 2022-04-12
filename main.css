@@ -1,0 +1,54 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI Adjusted", "Segoe UI", "Liberation Sans", sans-serif;
+	font-size: 14px;
+	line-height: 1.2rem;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+h2 {
+	font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI Adjusted", "Segoe UI", "Liberation Sans", sans-serif;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.risk-field {
+	border: 1px solid #42505C;
+	border-radius: 4px;
+	margin: 0 10px 0 5px;
+	transition: box-shadow 250ms ease-in-out;
+}
+
+.risk-field:hover {
+	box-shadow: 1px 3px 13px rgba(66, 80, 92, 0.13);
+}
+
+.risk-layout {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 10px 0;
+}
+
+.threshold-area {
+	bottom: 0;
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.threshold {
+	color: #42505C;
+	display: block;
+	font-size: 0.78rem;
+	font-weight: 500;
+	text-align: right;
+	line-height: 20px;
+	user-select: none;
+}
