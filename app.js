@@ -4,14 +4,18 @@ window.addEventListener("load", function () {
 
   riskFields.forEach(field => {
     const dataSetRiskPercent = field.getAttribute('data-risk-percent')
-    riskPercentage(field, dataSetRiskPercent, 80, 120)
+
+    let fieldWidth = field.offsetWidth;
+    let fieldHeight = field.offsetHeight;
+
+    riskPercentage(field, dataSetRiskPercent, fieldHeight, fieldWidth)
   })
 
 
   function riskPercentage(field, riskPercent, canvasHeight, canvasWidth) {
 
     let riskPositionY = canvasHeight - (riskPercent * canvasHeight / 100);
-    riskPositionX = riskPercent * canvasWidth / 100;
+    let riskPositionX = riskPercent * canvasWidth / 100;
 
     field.height = canvasHeight;
     field.width = canvasWidth;
@@ -29,6 +33,7 @@ window.addEventListener("load", function () {
 
       const thresholdTag = document.createElement('span')
       thresholdTag.classList.add('threshold')
+      thresholdTag.style.lineHeight = canvasHeight / thresholdCount + 'px'
 
       const thresholdTagDatas = document.createTextNode(thresholdNewNumber)
 
@@ -37,6 +42,7 @@ window.addEventListener("load", function () {
 
       field.parentNode.insertBefore(thresholdArea, field)
     }
+
 
     const bgGradient = ctx.createLinearGradient(25, canvasWidth, canvasWidth, -25)
     bgGradient.addColorStop(0, "#85c784")
@@ -48,19 +54,19 @@ window.addEventListener("load", function () {
 
     ctx.lineWidth = 0.1
     ctx.beginPath()
-    ctx.moveTo(0, 20)
-    ctx.lineTo(300, 20)
-    ctx.moveTo(0, 40)
-    ctx.lineTo(300, 40)
-    ctx.moveTo(0, 60)
-    ctx.lineTo(300, 60)
-    ctx.moveTo(30, 0)
-    ctx.lineTo(30, canvasHeight)
-    ctx.moveTo(60, 0)
-    ctx.lineTo(60, canvasHeight)
-    ctx.moveTo(90, 0)
-    ctx.lineTo(90, canvasHeight)
-    ctx.strokeStyle = '#000000'
+    ctx.moveTo(0, canvasHeight / thresholdCount)
+    ctx.lineTo(canvasWidth, canvasHeight / thresholdCount)
+    ctx.moveTo(0, canvasHeight / thresholdCount * 2)
+    ctx.lineTo(canvasWidth, canvasHeight / thresholdCount * 2)
+    ctx.moveTo(0, canvasHeight / thresholdCount * 3)
+    ctx.lineTo(canvasWidth, canvasHeight / thresholdCount * 3)
+    ctx.moveTo(canvasWidth / thresholdCount, 0)
+    ctx.lineTo(canvasWidth / thresholdCount, canvasHeight)
+    ctx.moveTo(canvasWidth / thresholdCount * 2, 0)
+    ctx.lineTo(canvasWidth / thresholdCount * 2, canvasHeight)
+    ctx.moveTo(canvasWidth / thresholdCount * 3, 0)
+    ctx.lineTo(canvasWidth / thresholdCount * 3, canvasHeight)
+    ctx.strokeStyle = '#121212'
     ctx.stroke()
 
     // ctx.beginPath()
@@ -71,13 +77,14 @@ window.addEventListener("load", function () {
     // ctx.stroke()
 
     ctx.beginPath()
-    ctx.arc(riskPositionX, riskPositionY, 4, 0, 10, false)
-    ctx.fillStyle = '#42505C'
+    ctx.arc(riskPositionX, riskPositionY, 3, 0, 2 * Math.PI)
+    ctx.fillStyle = '#121212'
+    ctx.stroke()
     ctx.fill()
 
     ctx.beginPath
-    ctx.fillStyle = '#42505C'
-    ctx.font = '18px'
+    ctx.font = "small-caps 600 0.86rem Poppins";
+    ctx.fillStyle = '#121212'
     ctx.fillText(`${riskPercent}%`, riskPositionX + 4, riskPositionY - 4)
   }
 

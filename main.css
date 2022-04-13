@@ -23,6 +23,10 @@ h2 {
 	border-radius: 4px;
 	margin: 0 10px 0 5px;
 	transition: box-shadow 250ms ease-in-out;
+	width: 100%;
+	max-width: 220px;
+	height: 100%;
+	max-height: 160px;
 }
 
 .risk-field:hover {
@@ -34,7 +38,10 @@ h2 {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	align-items: center;
 	padding: 10px 0;
+	width: 100%;
+	height: 100%;
 }
 
 .threshold-area {
@@ -46,9 +53,8 @@ h2 {
 .threshold {
 	color: #42505C;
 	display: block;
-	font-size: 0.78rem;
+	font-size: 14px;
 	font-weight: 500;
 	text-align: right;
-	line-height: 20px;
 	user-select: none;
 }
